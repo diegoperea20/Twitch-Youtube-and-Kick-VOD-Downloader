@@ -1,0 +1,35 @@
+[project]
+name = "downloadvods"
+version = "0.1.0"
+
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.40.0",
+    "yt-dlp>=2025.1.0",
+    "requests>=2.31.0",
+    "ffmpeg-python>=0.2.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+gpu = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "ruff>=0.3.0",
+]
+
+[tool.uv]
+python-downloads = "automatic"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128" }]
+torchvision = [{ index = "pytorch-cu128" }]
