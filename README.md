@@ -1,6 +1,6 @@
-# 🎬 Twitch and Kick VOD Downloader
+# 🎬 Twitch, Kick and YouTube VOD Downloader
 
-A modern Streamlit web application for downloading Twitch VODs and Kick videos with advanced features including GPU acceleration, quality selection, and time range trimming.
+A modern Streamlit web application for downloading Twitch VODs, Kick videos and YouTube videos with advanced features including GPU acceleration, quality selection, and time range trimming.
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)
@@ -10,14 +10,14 @@ A modern Streamlit web application for downloading Twitch VODs and Kick videos w
 
 
 <p align="center">
-  <img src="README-images/twicthkick.png" alt="Step1">
+  <img src="README-images/tkyotubeDowloader.png" alt="Step1">
 </p>
 
 
 
 ## ✨ Features
 
-- **🎯 Multi-Platform Support**: Download from both Twitch and Kick platforms
+- **🎯 Multi-Platform Support**: Download from Twitch, Kick and YouTube platforms
 - **🎬 Quality Selection**: Choose from available video qualities and framerates
 - **⏱️ Time Range Trimming**: Download specific segments using time selection or slider
 - **🚀 GPU Acceleration**: Optional hardware encoding with NVIDIA NVENC, AMD AMF, Intel VAAPI/QuickSync
@@ -137,6 +137,12 @@ or / and
 ```bash
 # Run application for not open browser inmediatly
 uv run streamlit run app.py --server.headless true
+```
+or for something windows 11 dont work 
+
+```bash
+# Run application for not open browser inmediatly
+uv run python -m streamlit run app.py --server.headless true
 ```
 
 ```bash

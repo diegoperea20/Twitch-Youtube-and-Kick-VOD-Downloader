@@ -9,6 +9,7 @@ dependencies = [
     "requests>=2.31.0",
     "ffmpeg-python>=0.2.0",
     "tqdm>=4.66.0",
+    "pytubefix>=10.3.8",
 ]
 
 [project.optional-dependencies]
