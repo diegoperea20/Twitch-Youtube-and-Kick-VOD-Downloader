@@ -230,6 +230,7 @@ def get_video_info(url, browser=None):
         "retries": 3,
         "fragment_retries": 3,
         "noprogress": True,
+        "noplaylist": True,
     }
     if browser:
         opts["cookies_from_browser"] = browser
@@ -303,6 +304,7 @@ def download_video(
             "no_warnings": True,
             "merge_output_format": "mp4",
             "progress_hooks": [progress_hook],
+            "noplaylist": True,
         }
         if browser:
             ydl_opts["cookies_from_browser"] = browser
