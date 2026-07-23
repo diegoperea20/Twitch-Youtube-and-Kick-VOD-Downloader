@@ -93,6 +93,7 @@ $path = uv run python download_vod.py --url <URL> --quiet 2>$null
 | "no GPU encoder detected" | Ensure FFmpeg is installed with GPU support. Falls back to CPU automatically |
 | "Download failed: HTTP Error 403" | YouTube blocking — use `--browser` flag |
 | `ffmpeg` not found | Install FFmpeg: `winget install Gyan.FFmpeg` |
+| Only 360p available on YouTube | Update yt-dlp: `uv add "yt-dlp>=2026.7"` |
 
 ## Integration
 

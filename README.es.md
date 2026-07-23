@@ -5,7 +5,7 @@ Descargador multi-plataforma de VODs para **Twitch**, **Kick** y **YouTube**. Pr
 ![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-Required-orange.svg)
-![yt-dlp](https://img.shields.io/badge/yt--dlp-2025.1+-green.svg)
+![yt-dlp](https://img.shields.io/badge/yt--dlp-2026.7+-green.svg)
 
 <p align="center">
   <img src="README-images/tkyotubeDowloader.png" alt="Captura de la aplicación">

@@ -148,21 +148,6 @@ def parse_formats(info, platform):
 
 
 def _youtube_all_qualities(info):
-    best_audio_mp4, best_abr_mp4 = None, 0
-    best_audio_any, best_abr_any = None, 0
-    for f in info.get("formats", []):
-        if f.get("vcodec", "none") != "none":
-            continue
-        if f.get("acodec", "none") == "none":
-            continue
-        abr = f.get("abr", 0) or f.get("tbr", 0) or 0
-        ext = f.get("ext", "")
-        if ext in ("m4a", "mp4") and abr > best_abr_mp4:
-            best_abr_mp4, best_audio_mp4 = abr, f["format_id"]
-        if abr > best_abr_any:
-            best_abr_any, best_audio_any = abr, f["format_id"]
-    best_audio = best_audio_mp4 or best_audio_any
-
     def codec_priority(vcodec, ext):
         vc = (vcodec or "").lower()
         if "avc" in vc or "h264" in vc:
@@ -198,7 +183,7 @@ def _youtube_all_qualities(info):
 
     result = []
     for (h, fps), vdata in video_streams.items():
-        fmt_id = f"{vdata['format_id']}+{best_audio}" if best_audio else vdata["format_id"]
+        fmt_id = f"bestvideo[height<={h}]+bestaudio/best[height<={h}]"
         quality = f"{h}p{fps if fps != 30 else ''}"
         filesize = vdata["filesize"]
         needs_tc = vdata["needs_transcode"]
@@ -307,11 +292,16 @@ def download_video(
             elif d["status"] == "finished" and not quiet:
                 print(file=sys.stderr)
 
+        if not quiet:
+            print(f"Using format: {format_id}", file=sys.stderr)
+            print("Downloading video...", file=sys.stderr)
+
         ydl_opts = {
             "format": format_id,
             "outtmpl": temp_file,
             "quiet": True,
             "no_warnings": True,
+            "merge_output_format": "mp4",
             "progress_hooks": [progress_hook],
         }
         if browser:
@@ -324,9 +314,6 @@ def download_video(
             ydl_opts["external_downloader_args"] = {
                 "ffmpeg_i": ["-ss", str(start_time), "-to", str(end_time)]
             }
-
-        if not quiet:
-            print("Downloading video...", file=sys.stderr)
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])

@@ -32,7 +32,7 @@ downloadvods/
 ## Key Dependencies (from pyproject.toml)
 
 - `streamlit>=1.40.0`
-- `yt-dlp>=2025.1.0`
+- `yt-dlp>=2026.7` (obligatorio para YouTube — versiones anteriores solo obtienen 360p)
 - `requests>=2.31.0`
 - `ffmpeg-python>=0.2.0`
 - `tqdm>=4.66.0`
