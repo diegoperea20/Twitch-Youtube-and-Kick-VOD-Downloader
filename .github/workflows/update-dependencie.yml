@@ -1,0 +1,35 @@
+#update dependencie yt-dlp when is release
+name: Update dependencies
+
+on:
+  schedule:
+    - cron: "0 8 1,16 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Update yt-dlp
+        run: uv lock --upgrade-package yt-dlp
+
+      - name: Check changes
+        run: git diff uv.lock
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(deps): update yt-dlp"
+          title: "chore(deps): update yt-dlp"
+          body: "Automated update of yt-dlp to the latest stable release."
+          branch: "deps/update-yt-dlp"
