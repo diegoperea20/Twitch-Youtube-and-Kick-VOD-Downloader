@@ -5,7 +5,7 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
     "streamlit>=1.40.0",
-    "yt-dlp>=2026.7",
+    "yt-dlp>=2026.8",
     "requests>=2.31.0",
     "ffmpeg-python>=0.2.0",
     "tqdm>=4.66.0",
